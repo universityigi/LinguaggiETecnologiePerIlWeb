@@ -1,0 +1,52 @@
+<!DOCTYPE x [
+<!ELEMENT x (y1,y2)+>
+<!ELEMENT y1 ((z1|z2)*,(z3,z4)+)>
+<!ELEMENT y2 (z1?,z2*,z3?)>
+<!ELEMENT z1 (#PCDATA)>
+<!ELEMENT z2 (#PCDATA)>
+<!ELEMENT z3 (#PCDATA)>
+<!ELEMENT z4 EMPTY>
+<!ATTLIST x attrx CDATA #REQUIRED>
+<!ATTLIST y1 attry CDATA #IMPLIED>
+]>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.1" >
+    <xsd:element name="x" type="TIPOX"/>
+    <xsd:complexType name="TIPOX">
+               <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+                <xsd:element ref="y1"/>
+                <xsd:element ref="y2"/>                            
+            </xsd:sequence>
+            <xsd:attribute name="attrx" type="xsd:string" use="required"/>                               
+                    </xsd:complexType>
+             
+    <xsd:element name="y1">
+        <xsd:complexType>
+            <xsd:sequence>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element name="z1" type="xsd:string"/>
+                <xsd:element name="z2" type="xsd:string"/>
+            </xsd:choice>
+               
+            <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+                <xsd:element name="z3" type="xsd:string" />
+                <xsd:element ref="z4"/>
+            </xsd:sequence>
+            </xsd:sequence>
+            <xsd:attribute name="y1" type="xsd:string"/>       
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="y2">
+        <xsd:complexType>
+        <xsd:sequence>
+            <xsd:element name="z1" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="z2" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="z3" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="z4">
+        <xsd:complexType/>
+    </xsd:element>
+</xsd:schema> 

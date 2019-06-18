@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE b [
+<!ELEMENT b (a+)>
+<!ELEMENT a (p,(t|(q,a)|(y,a)),(y,t)*)>
+<!ELEMENT p (s,t*,(q|y))>
+<!ELEMENT q (t|y|p|a)>
+<!ELEMENT t (#PCDATA)>
+<!ELEMENT y (y|a|s)*>
+<!ELEMENT s (#PCDATA)>
+<!ATTLIST a val CDATA #REQUIRED>
+<!ATTLIST p val CDATA #IMPLIED>
+<!ATTLIST s attr (vala|valb|valc) "valc">
+]>
+
+<b>
+    <a val="x">
+        <p>
+            <s attr="vala">text</s>
+            <y>
+                <s attr="valb">text2</s>
+            </y>
+             </p>
+        <t>text</t>
+    </a>
+</b>

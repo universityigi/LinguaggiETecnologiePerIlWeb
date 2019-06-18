@@ -1,0 +1,66 @@
+<!DOCTYPE r [
+<!ELEMENT r (a+, (b,c)?, (d|e)*)>
+<!ELEMENT a (#PCDATA)>
+<!ELEMENT b ((c|d)*, (a|e)+)>
+<!ELEMENT c (d,e)>
+<!ELEMENT d (#PCDATA|e)*>
+<!ELEMENT e EMPTY>
+<!ATTLIST r val CDATA #REQUIRED>
+<!ATTLIST a attr CDATA #IMPLIED>
+]>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.1">
+    <xsd:element name="r" type="TIPOR"/>
+    <xsd:complexType name="TIPOR">
+        <xsd:sequence>
+            <xsd:element name="a" type="xsd:string" minOccurs="1" maxOccurs="unbounded"/>
+            <xsd:sequence minOccurs="0" maxOccurs="1">
+                <xsd:element ref="b"/>
+                <xsd:element ref="c"/>
+            </xsd:sequence>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element ref="d"/>
+                <xsd:element ref="e"/>
+            </xsd:choice>
+        </xsd:sequence>
+        <xsd:attribute name="val" type="xsd:string" use="required"/>
+    </xsd:complexType>
+    <xsd:element name="b">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                    <xsd:element ref="c"/>
+                    <xsd:element ref="d"/>
+                </xsd:choice>
+                <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+                    <xsd:element ref="e"/>
+                    <xsd:element ref="a"/>
+                </xsd:sequence>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="c">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="d"/>
+                <xsd:element ref="e"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="d">
+        <xsd:complexType mixed="true">
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element ref="e"/>
+            </xsd:choice>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="e">
+        <xsd:complexType/>
+    </xsd:element>
+    <xsd:element name="a">
+        <xsd:complexType>
+            <xsd:attribute name="attr" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>    
+</xsd:schema>

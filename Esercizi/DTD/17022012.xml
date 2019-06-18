@@ -1,0 +1,30 @@
+<!DOCTYPE r [
+<!ELEMENT r (((a,b)|(c,d)),e?,f*)>
+<!ELEMENT a (#PCDATA)>
+<!ELEMENT b ((b|d)*,((c,d)|(a,f)|e)?,b?,r)>
+<!ELEMENT c (#PCDATA|e|f)*>
+<!ELEMENT d ((e,f,e,f)|(a+,(f,e)*,(d|e|f)))>
+<!ELEMENT e (#PCDATA)>
+<!ELEMENT f EMPTY>
+<!ATTLIST b valore (vala|valb|valc) "valc">
+<!ATTLIST e attr CDATA #IMPLIED
+                    valore CDATA #REQUIRED>
+ ]>
+ <r>
+<a>text</a>
+ <b valore="valb">
+<d>
+     <e valore="x">text</e><f/><e valore="y">text</e>
+     <f/>
+     </d>
+     <r><c>text</c>
+<d>
+     <e valore="x">text</e><f/><e valore="y">text</e>
+     <f/>
+     </d>
+     </r>
+     </b>
+     
+     </r>
+ 
+                    

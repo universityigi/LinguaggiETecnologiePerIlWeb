@@ -1,0 +1,51 @@
+<!DOCTYPE r [
+<!ELEMENT r (a,c)*>
+<!ELEMENT a ((d|b)+,(g,f)*)>
+<!ELEMENT c (d?,b,g*)>
+<!ELEMENT d (#PCDATA)>
+<!ELEMENT b (#PCDATA)>
+<!ELEMENT g (#PCDATA)>
+<!ELEMENT f EMPTY>
+<!ATTLIST a attra CDATA #REQUIRED>
+<!ATTLIST c attrc CDATA #IMPLIED>
+]>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XmlSchema"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.1">
+  <xsd:element name="r" type="TIPOR"/>
+    <xsd:complexType name="TIPOR">
+        <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element ref="a"/>
+            <xsd:element ref="c"/>
+        </xsd:sequence>
+    </xsd:complexType>
+        <xsd:element name="a">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:choice minOccurs="1" maxOccurs="unbounded">
+                    <xsd:element name="d" type="xsd:string"/>
+                    <xsd:element name="b" type="xsd:string"/>
+                </xsd:choice>
+                <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+                    <xsd:element name="g" type="xsd:string"/>
+                    <xsd:element ref="f"/>
+                </xsd:sequence>
+            </xsd:sequence>
+            <xsd:attribute name="attra" type="xsd:string" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="c">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="d" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="b" type ="xsd:string"/>
+                <xsd:element name="g" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+            <xsd:attribute name="attrc" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+        <xsd:element name="f">
+            <xsd:complexType/>
+    </xsd:element>
+  
+</xsd:schema>

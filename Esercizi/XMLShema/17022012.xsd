@@ -1,0 +1,24 @@
+<!DOCTYPE r [
+<!ELEMENT r ((x, y)?, z*, w+, z)>
+<!ELEMENT x (#PCDATA)>
+<!ELEMENT y (#PCDATA)>
+<!ELEMENT w EMPTY>
+<!ELEMENT z (#PCDATA)>
+]>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="r" type="TIPOR"/>
+    <xsd:complexType name="TIPOR">
+        <xsd:sequence>
+            <xsd:sequence minOccurs="0" maxOccurs="1">
+                <xsd:element name="x" type="xsd:string"/>
+                <xsd:element name="y" type="xsd:string"/>
+            </xsd:sequence>
+            <xsd:element name="z" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element ref="w" minOccurs="1" maxOccurs="unbounded"/>
+            <xsd:element name="z" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="w">
+        <xsd:complexType/>
+    </xsd:element>
+</xsd:schema>

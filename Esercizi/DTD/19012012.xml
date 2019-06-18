@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE r [
+<!ELEMENT r (#PCDATA|a|b|c|d)*>
+<!ELEMENT a (#PCDATA)>
+<!ELEMENT b EMPTY>
+<!ELEMENT c ANY>
+<!ELEMENT d ((a|b)*,((c,d)|(e,a)|f)?,b,c,d)>
+<!ELEMENT e (#PCDATA|f)*>
+<!ELEMENT f (#PCDATA)>
+<!ATTLIST b valore (0|1|2|3) "0">
+<!ATTLIST f attr CDATA #REQUIRED
+valore CDATA #IMPLIED>
+]>
+
+<r></r>

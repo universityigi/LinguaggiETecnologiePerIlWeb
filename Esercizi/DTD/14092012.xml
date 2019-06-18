@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE a [
+<!ELEMENT a (b,c,d,e)>
+<!ELEMENT b ((c|d)*, ((b,c)?|e))>
+<!ELEMENT c (b+|((d,e)?,c?,f?))>
+<!ELEMENT d (#PCDATA)>
+<!ELEMENT e EMPTY>
+<!ELEMENT f (#PCDATA)>
+<!ATTLIST a val CDATA #REQUIRED>
+<!ATTLIST b val CDATA #IMPLIED>
+<!ATTLIST c attr (1|2|3|4) "1">
+]>
+
+<a val="x">
+    <b val="d">
+        <e/>
+    </b>
+    <c attr="1"> 
+    <b val="f">
+        <e/>
+    </b>
+    </c>
+    <d>text</d>
+    <e/>
+</a>

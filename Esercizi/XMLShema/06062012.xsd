@@ -1,0 +1,28 @@
+<!DOCTYPE r [
+<!ELEMENT r (s+, (u, v)?, (t|w)*)>
+<!ELEMENT s EMPTY>
+<!ELEMENT t (#PCDATA)>
+<!ELEMENT u (#PCDATA)>
+<!ELEMENT v (#PCDATA)>
+<!ELEMENT w (#PCDATA)>
+]>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="r" type="TIPOR"/>
+    <xsd:complexType name="TIPOR">
+        <xsd:sequence>
+            <xsd:element ref="s" minOccurs="1" maxOccurs="unbounded"/>
+            <xsd:sequence minOccurs="0" maxOccurs="1">
+                <xsd:element name="u" type="xsd:string" />
+                <xsd:element name="v" type="xsd:string"/>
+            </xsd:sequence>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element name="t" type="xsd:string"/>
+                <xsd:element name="w" type="xsd:string"/>                
+            </xsd:choice>
+            </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="s">
+        <xsd:complexType/>
+    </xsd:element>
+</xsd:schema>

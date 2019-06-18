@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE r [
+<!ELEMENT r (a+, (b,c)?, (d|e)*)>
+<!ELEMENT a (#PCDATA)>
+<!ELEMENT b ((c|d)*, (a|e)+)>
+<!ELEMENT c (d,e)>
+<!ELEMENT d (#PCDATA|e)*>
+<!ELEMENT e EMPTY>
+<!ATTLIST r val CDATA #REQUIRED>
+<!ATTLIST a attr CDATA #IMPLIED>
+]>
+<r val="e">
+    <a>text</a>
+</r>

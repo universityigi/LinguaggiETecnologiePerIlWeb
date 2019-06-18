@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>EsercitazioneLab - Pagina di login</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link href="../css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="signin.css" rel="stylesheet"/>
+        <script type="text/javascript" lang="javascript" src="../js/bootstrap.min.js">
+		</script>
+        <script type="text/javascript" lang="javascript" src="loginScript.js"></script>
+    </head>
+    <body class="text-center">
+        <form action="https://www.diag.uniroma1.it/~rosati/lw/" class="form-signin" 
+		method="POST" name="myForm" onSubmit="return validaForm()">
+            <img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" 
+			width="72" height="72"/>
+            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            <input type="email" name="inputEmail" class="form-control" 
+			placeholder="Email address" required autofocus/>
+            <input type="password" name="inputPassword" class="form-control" 
+			placeholder="Password" required/>
+            <div id="divCap" class="text-center">
+                <label for="cap">Inserisci il CAP di provenienza:</label>
+                <input type="text" name="cap" size="5" maxlength="5" 
+				onChange="return controllaCAP()"/>
+            </div>
+            <div id="divRemember" class="checkbox mb-3">
+                <input type="checkbox" name="remember"/>
+                <label for="remember">Remember me</label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE a [
+<!ELEMENT a (a*,(u|s|z),a*,y,((t,y)|(w,z)))>
+<!ELEMENT s (#PCDATA|w)*>
+<!ELEMENT t (x?,w*,(t|a|s)?)>
+<!ELEMENT u (a?,(u|s)*,(z,y)+)>
+<!ELEMENT x (#PCDATA|x)*>
+<!ELEMENT y (#PCDATA|x)*>
+<!ELEMENT w EMPTY>
+<!ELEMENT z ((z,y)*,(u|s)+)>
+<!ATTLIST s attrs CDATA #REQUIRED>
+<!ATTLIST u attru CDATA #IMPLIED>
+<!ATTLIST x attrx CDATA #REQUIRED>
+]>
+
+<a>
+    <u attru="x">
+        <z>
+            <s attrs="d">text</s>
+        </z>
+        <y>tetx</y>
+    </u>
+    <y>texy</y>
+<t>
+    <w/>
+</t>
+<y>text5</y>
+</a>
+

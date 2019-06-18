@@ -1,0 +1,25 @@
+<!DOCTYPE a [
+<!ELEMENT a (b?,c+,(d,e)*,f*)>
+<!ELEMENT b (#PCDATA)>
+<!ELEMENT c (#PCDATA)>
+<!ELEMENT d (#PCDATA)>
+<!ELEMENT e EMPTY>
+<!ELEMENT f (#PCDATA)>
+]>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="a" type="TIPOA"/>
+    <xsd:complexType name="TIPOA">
+        <xsd:sequence>
+            <xsd:element name="b" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="c" type="xsd:string" minOccurs="1" maxOccurs="unbounded"/>
+            <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+                <xsd:element name="d" type="xsd:string"/>
+                <xsd:element ref="e"/>
+            </xsd:sequence>
+            <xsd:element name="f" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="e">
+        <xsd:complexType/>
+    </xsd:element>
+</xsd:schema>
