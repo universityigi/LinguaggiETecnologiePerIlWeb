@@ -1,5 +1,4 @@
-# Template
-## Nome progetto
+## Title: Nome progetto
 
 #### Authors: Nome Cognome, Nome Cognome, Nome Cognome
 
@@ -13,4 +12,3 @@
 #### DEMO:  https://example.com/#/
 
 #### Source: https://github.com/example
-
